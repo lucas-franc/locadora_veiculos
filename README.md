@@ -1,15 +1,19 @@
 # locadora_veiculos
 
+![](model.png)
+
 ## Criando banco de dados
 create schema veiculos
 
+
+## Criando tabelas utilizando a terceira forma normal
+```
 create table veiculos (
  placa int not null primary key,
  modelo varchar(45),
  cor varchar(45)
 );
 
-## Criando tabelas utilizando a terceira forma normal
 create table clientes (
  cpf varchar(11) not null primary key,
  nome varchar(45),
@@ -25,8 +29,9 @@ create table locacoes (
     dias INT,
     valorDiaria DECIMAL(9,2)
 );
-
+```
 ## Criando view para mostrar os dados
+```
 CREATE VIEW LocacoesVeiculosClientes AS
 SELECT l.codigo AS codigo_locacao,
        v.placa AS placa_veiculo,
@@ -40,8 +45,9 @@ SELECT l.codigo AS codigo_locacao,
 FROM locacoes l
 INNER JOIN veiculos v ON l.veiculo_placa = v.placa
 INNER JOIN clientes c ON l.cliente_cpf = c.cpf;
-
+```
 ## Inserindo os dados
+```
 INSERT INTO veiculos (placa, modelo, cor) VALUES
 (1234, 'Gol', 'Preto'),
 (5678, 'Uno', 'Branco'),
@@ -58,6 +64,8 @@ INSERT INTO locacoes (veiculo_placa, cliente_cpf, dias, valorDiaria) VALUES
 (1234, '11111111111', 5, 150.00), -- João alugou o Gol por 5 dias
 (5678, '22222222222', 3, 120.00), -- Maria alugou o Uno por 3 dias
 (9876, '33333333333', 7, 180.00); -- Pedro alugou o Corsa por 7 dias
-
+```
 ## Testando a view
+```
 SELECT * FROM ViewLocacoesVeiculosClientes
+```
