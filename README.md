@@ -1,6 +1,6 @@
 # locadora_veiculos
 
-![](model.png)
+![](modelo.png)
 
 ## Criando banco de dados
 create schema veiculos
